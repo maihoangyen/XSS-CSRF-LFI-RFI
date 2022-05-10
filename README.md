@@ -25,3 +25,5 @@
 ### Nội dung báo cáo 
 #### 1. XSS <a name="gioithieu"></a>
 <br> 1.1 Khái niệm XSS <a name="tc"></a></br>
+ - XSS là một lỗi bảo mật cho phép các hecker chèn các đoạn script nguy hiểm vào trong source code ứng dụng web. Nhằm thực thi các đoạn mã độc Javascript để chiếm phiên đăng nhập của người dùng.
+<br> 1.1 Các kiểu khai thác XSS <a name="tc"></a></br>
