@@ -81,3 +81,6 @@
            `if (stripos ($default, "<script") !== false)`
 
 <br> 1.5 Mô phỏng code XSS <a name="tc"></a></br>
+- Đây là code lỗi XSS:
+
+  ![image](https://user-images.githubusercontent.com/101852647/167766624-108c8ce9-20bb-4c73-9180-0599499ab63f.png)
