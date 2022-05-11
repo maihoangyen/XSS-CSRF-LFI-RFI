@@ -71,7 +71,7 @@
      - Ví dụ:
             
             ` $name = str_replace( '<script>', '', $_GET[ 'name' ] );`
-   - `preg_replace`: Dùng để replace một chuỗi nào đó khớp với đoạn Regular Expression truyền vào. Hàm này có chức năng tương tự như `str_replace` nhưng có sự khác biệt là một bên dùng regex một bên không dùng.
+   - `preg_replace`: Dùng để replace một chuỗi nào đó khớp với đoạn Regular Expression truyền vào. Hàm này có chức năng tương tự như str_replace nhưng có sự khác biệt là một bên dùng regex một bên không dùng.
      - Ví dụ:
             
             ` $name = preg_replace( '/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i', '', $_GET[ 'name' ] );`
