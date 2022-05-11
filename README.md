@@ -41,27 +41,35 @@
  - Chúng ta sẽ sử dụng các hàm sau đây để ngăn chặn xss:
    - Mã hóa HTML:
      - `htmlspecialchars`: sẽ chuyển đổi bất kỳ "ký tự đặc biệt HTML" nào thành các mã hóa HTML của chúng, có nghĩa là sau đó chúng sẽ không được xử lý dưới dạng HTML tiêu chuẩn. 
-        - Ví dụ:`<?php echo '<div>' . htmlspecialchars($_GET['input']) . '</div>';`
+        - Ví dụ:
+               `<?php echo '<div>' . htmlspecialchars($_GET['input']) . '</div>';`
      - `filter_input`: Hàm này được sử dụng để xác thực các biến từ các nguồn không an toàn, chẳng hạn như đầu vào của người dùng.
-        - Ví dụ: `echo '<div>' . filter_input(INPUT_GET, 'input', FILTER_SANITIZE_SPECIAL_CHARS) . '</div>';`
+        - Ví dụ: 
+                `echo '<div>' . filter_input(INPUT_GET, 'input', FILTER_SANITIZE_SPECIAL_CHARS) . '</div>';`
      - `htmlentities`: Cũng thực hiện tác vụ tương tự như htmlspecialchars () nhưng hàm này bao gồm nhiều thực thể ký tự hơn. Nó sẽ chuyển các kí tự thích hợp thành các kí tự HTML entiies(kí tự dùng để hiển thị các biểu tượng).
-        - Ví dụ:`htmlentities($var, ENT_QUOTES | ENT_HTML5, $charset)`
+        - Ví dụ:
+                `htmlentities($var, ENT_QUOTES | ENT_HTML5, $charset)`
    - Mã hóa URL:
      - `urlencode`: Chức năng để xuất các URL hợp lệ một cách an toàn. Mọi thông tin đầu vào độc hại sẽ được chuyển đổi thành tham số URL được mã hóa.
-        - Ví dụ: `<?php $input = urlencode($_GET['input']);`
+        - Ví dụ:
+                `<?php $input = urlencode($_GET['input']);`
      - Chúng ta cũng có thể sử dụng bộ lọc `FILTER_SANITIZE_URL` trong hàm `filter_input` để mã hóa url.
         - Ví dụ: `$input = filter_input(INPUT_GET, 'input', FILTER_SANITIZE_URL);`
    - `strip_tags`: Hàm này có tác dụng loại bỏ đi các ký tự html trong một string. Mặc dù strip_tags có thể loại bỏ các ký tự html cho data của chúng ta tuy nhiên nó chỉ xóa một số thẻ nhất định ngay cả khi thẻ đó là hợp lệ.
-     - Ví dụ: `<?php 
+     - Ví dụ: 
+               `<?php 
                $text = '<p>Test paragraph.</p><!-- Comment --> <a href="#fragment">Other text</a>'; 
                echo strip_tags($text, '<p><a>');`
    
    - `Addlashes `: Thêm một ký tự gạch chéo nhằm ngăn kẻ tấn công chấm dứt việc gán biến và thêm mã thực thi vào cuối.
    - `str_replace`: Trả về một chuỗi mới với tất cả các lần xuất hiện của một chuỗi con được thay thế bằng một chuỗi khác.
-     - Ví dụ: ` $name = str_replace( '<script>', '', $_GET[ 'name' ] );`
+     - Ví dụ:
+            ` $name = str_replace( '<script>', '', $_GET[ 'name' ] );`
    - `preg_replace`: Dùng để replace một chuỗi nào đó khớp với đoạn Regular Expression truyền vào. Hàm này có chức năng tương tự như `str_replace` nhưng có sự khác biệt là một bên dùng regex một bên không dùng.
-     - Ví dụ: ` $name = preg_replace( '/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i', '', $_GET[ 'name' ] );`
+     - Ví dụ:
+            ` $name = preg_replace( '/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t/i', '', $_GET[ 'name' ] );`
    - `stripos`: Sẽ chỉ ra vị trí xuất hiện đầu tiên của chuỗi con nào đó trong chuỗi mà không phân biệt chữ hoa chữ thường. Hàm trả về số nguyên là vị trí xuất hiện đầu tiên của chuỗi con.
-     - Ví dụ: `if (stripos ($default, "<script") !== false)`
+     - Ví dụ: 
+            `if (stripos ($default, "<script") !== false)`
 
 <br> 1.5 Mô phỏng code XSS <a name="tc"></a></br>
