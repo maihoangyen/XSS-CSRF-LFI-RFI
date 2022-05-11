@@ -101,6 +101,20 @@
   
   ![image](https://user-images.githubusercontent.com/101852647/167767649-0781af62-0bd8-4d00-b2ba-f03b38b7ca95.png)
 
+<br> 1.6 khắc phục code XSS <a name="tc"></a></br>
+ - Đây là code khắc phục lỗi XSS:
 
+   ![image](https://user-images.githubusercontent.com/101852647/167768472-d622c437-0863-497b-b52a-c5c2984a9f3b.png)
 
-  
+ - Đây là màn hình của web fix lỗi:
+
+   ![image](https://user-images.githubusercontent.com/101852647/167768565-b27f20fa-a9ba-41ec-b60c-2cd1ff96b81c.png)
+
+ - Thử chèn lại đoạn mã đã thực thi phía trên `<script>alert(document.cookie)</script>` và `<script>alert('hacker')</script>`.
+
+   ![image](https://user-images.githubusercontent.com/101852647/167768683-02e5354e-27f4-4358-aabb-8cbe7be7520a.png)
+
+   ![image](https://user-images.githubusercontent.com/101852647/167768738-0cef7b51-ecf2-4c8b-9235-752af6ddd39a.png)
+
+   ![image](https://user-images.githubusercontent.com/101852647/167768787-ef7015ca-4070-403b-ae8d-075977648cee.png)
+
