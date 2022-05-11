@@ -58,7 +58,9 @@
                 
                 `<?php $input = urlencode($_GET['input']);`
      - Chúng ta cũng có thể sử dụng bộ lọc `FILTER_SANITIZE_URL` trong hàm `filter_input` để mã hóa url.
-        - Ví dụ: `$input = filter_input(INPUT_GET, 'input', FILTER_SANITIZE_URL);`
+        - Ví dụ: 
+        
+                `$input = filter_input(INPUT_GET, 'input', FILTER_SANITIZE_URL);`
    - `strip_tags`: Hàm này có tác dụng loại bỏ đi các ký tự html trong một string. Mặc dù strip_tags có thể loại bỏ các ký tự html cho data của chúng ta tuy nhiên nó chỉ xóa một số thẻ nhất định ngay cả khi thẻ đó là hợp lệ.
      - Ví dụ: 
               
