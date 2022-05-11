@@ -42,6 +42,7 @@
    - Mã hóa HTML:
      - `htmlspecialchars`: sẽ chuyển đổi bất kỳ "ký tự đặc biệt HTML" nào thành các mã hóa HTML của chúng, có nghĩa là sau đó chúng sẽ không được xử lý dưới dạng HTML tiêu chuẩn. 
         - Ví dụ:
+               
                `<?php echo '<div>' . htmlspecialchars($_GET['input']) . '</div>';`
      - `filter_input`: Hàm này được sử dụng để xác thực các biến từ các nguồn không an toàn, chẳng hạn như đầu vào của người dùng.
         - Ví dụ: 
