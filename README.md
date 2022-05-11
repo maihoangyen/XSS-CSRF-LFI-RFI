@@ -143,3 +143,25 @@
 <br> 4.2 Cách thức hoạt động RFI <a name="tc"></a></br>
  - Lỗ hổng Remote file inclusion RFI cho phép tin tặc include và thực thi trên máy chủ mục tiêu một tệp tin được lưu trữ từ xa. Tin tặc có thể sử dụng RFI để chạy một mã độc trên cả máy của người dùng và phía máy chủ. Ảnh hưởng của kiểu tấn công này thay đổi từ đánh cắp tạm thời session token hoặc các dữ liệu của người dùng cho đến việc tải lên các webshell, mã độc nhằm đến xâm hại hoàn toàn hệ thống máy chủ. 
  - Khai thác lỗ hổng Remote file inclusion trong PHP PHP có nguy cơ cao bị tấn công RFI do việc sử dụng lệnh include rất nhiều và thiết đặt mặc định của server cũng ảnh hưởng một phần nào đó. Để bắt đầu chúng ta cần tìm nơi chứa file include trong ứng dụng phụ thuộc vào dữ liệu đầu vào người dùng. 
+<br> 4.3 Mô phỏng code RFI <a name="tc"></a></br>
+- Đây là code lỗi RFI:
+
+  ![image](https://user-images.githubusercontent.com/101852647/167880954-9c5c97bc-696f-45c9-b8e5-27daefb6140a.png)
+  
+- Đây là giao diện trang web có lỗi RFI:
+
+  ![image](https://user-images.githubusercontent.com/101852647/167881253-e2227593-52ed-451b-9c46-37cfee3cfc88.png)
+
+- Để có thể thực hiện tấn công RFI thì đầu tiên chúng ta thử nhúng các url vào trang web. Ví dụ như bây giờ chúng ta thử chúng url `http://www.google.com`. Kết quả bên dưới cho chúng ta thấy là trang web này cho phép tải lên các trang web khác. Vì vậy, mà chúng ta có thể lợi dụng lỗ hổng này để tải nhúng các lệnh php mà mình muốn lên trang web và thực thi lệnh đó.
+
+ ![image](https://user-images.githubusercontent.com/101852647/167882234-c89a9ad9-faf0-4612-8889-220b72dc7e60.png)
+
+- Tiếp theo chúng ta sẽ tạo một file `hacker.html ` với nội dung như sau:
+
+  ![image](https://user-images.githubusercontent.com/101852647/167883519-80552706-8fa9-4125-8782-d5eb30cc9316.png)
+  
+- Bây giờ chúng ta thử nhúng file này vào trang web và thu được kết quả:
+
+  ![image](https://user-images.githubusercontent.com/101852647/167883824-a0899ecc-4ebf-40dd-a9b5-66695d7fbaa3.png)
+
+ 
