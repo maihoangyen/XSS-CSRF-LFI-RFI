@@ -118,3 +118,11 @@
 
    ![image](https://user-images.githubusercontent.com/101852647/167768787-ef7015ca-4070-403b-ae8d-075977648cee.png)
 
+#### 1. CSRF <a name="gioithieu"></a>
+<br> 1.1 Khái niệm CSRF <a name="tc"></a></br>
+ - CSRF là viết tắt của Cross-site Request Forgery là kỹ thuật tấn công giả mạo chính chủ thể của nó. CSRF nói đến việc tấn công vào chứng thực request trên web thông qua việc sử dụng Cookies.
+ 
+<br> 1.2 Cách thức tấn công CSRF <a name="tc"></a></br>
+ - CSRF là một kiểu tấn công gây sự nhầm lẫn tăng tính xác thực và cấp quyền của nạn nhân khi gửi một request giả mạo đến máy chủ. Vì thế một lỗ hổng CSRF ảnh hưởng đến các quyền của người dùng ví dụ như quản trị viên, kết quả là chúng truy cập được đầy đủ quyền.
+ - Khi gửi một request HTTP, trình duyệt của nạn nhân sẽ nhận về Cookie. Các cookie thường được dùng để lưu trữ một session để định danh người dùng không phải xác thực lại cho mỗi yêu cầu gửi lên.
+ - Nếu phiên làm việc đã xác thực của nạn nhân được lưu trữ trong một Cookie vẫn còn hiệu lực và nếu ứng dụng không bảo mật dễ bị tấn công CSRF. Kẻ tấn công có thể sử dụng CSRF để chạy bất cứ requets nào với ứng dụng web mà ngay cả trang web không thể phân biệt được request nào là thực hay giả mạo.
