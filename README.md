@@ -84,3 +84,23 @@
 - Đây là code lỗi XSS:
 
   ![image](https://user-images.githubusercontent.com/101852647/167766624-108c8ce9-20bb-4c73-9180-0599499ab63f.png)
+
+- Đây là giao diện trang web XSS:
+
+  ![image](https://user-images.githubusercontent.com/101852647/167766786-09500954-9b91-4efa-ac35-0a9c0bfcc6c2.png)
+  
+- Bây giờ chúng ta sẽ thử chèn một đoạn mã javascript `<script>alert(document.cookie)</script>` vào trong trường id để chiếm phiên người dùng.
+
+  ![image](https://user-images.githubusercontent.com/101852647/167767151-092e3449-ab5f-477e-8a54-7ed29eda9928.png)
+  
+  ![image](https://user-images.githubusercontent.com/101852647/167767182-433f8669-1bfb-4649-8042-0ed4847a828b.png)
+
+- Hoặc có thể chèn đoạn mã sau `<script>alert('hacker')</script>` để chèn vào trong Database.
+
+  ![image](https://user-images.githubusercontent.com/101852647/167767634-9cb8f128-ee6c-4985-b19d-922d9a1b0973.png)
+  
+  ![image](https://user-images.githubusercontent.com/101852647/167767649-0781af62-0bd8-4d00-b2ba-f03b38b7ca95.png)
+
+
+
+  
