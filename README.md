@@ -139,7 +139,7 @@
 <br> 3.3 Mô phỏng code LFI <a name="tc"></a></br>
 - Đây là code lỗi LFI:
 
-  ![image](https://user-images.githubusercontent.com/101852647/167880954-9c5c97bc-696f-45c9-b8e5-27daefb6140a.png)
+  ![image](https://user-images.githubusercontent.com/101852647/168015234-3ff28878-8afa-4f35-9116-da7362f35dce.png)
   
 - Đây là giao diện trang web có lỗi LFI:
 
@@ -156,9 +156,9 @@
 <br> 3.4 Khắc phục lỗi LFI <a name="tc"></a></br>
  - Đây là code khắc phục lỗi LFI. Chúng ta sẽ sử dụng hàm ` str_replace` để thay đổi một số ký tự `http://, https://, ../` trên url để các hacker không thể khai thác được:
 
-   ![image](https://user-images.githubusercontent.com/101852647/168013767-b5f6ae69-c584-4b23-968b-b49a771423c4.png)
+   ![image](https://user-images.githubusercontent.com/101852647/168015562-1f783fb4-5d7f-4e70-82bc-e9d00f954095.png)
 
- - Trang web vẫn bình thường cho đến khi chúng ta chèn thêm `http://www.google.com` hoặc `../../../../etc/paswd` thì nó sẽ thông báo lỗi:
+ - Trang web vẫn bình thường cho đến khi chúng ta chèn thêm `../../../../etc/paswd` thì nó sẽ thông báo lỗi:
 
    ![image](https://user-images.githubusercontent.com/101852647/168014384-a891fa29-9e61-4c90-a730-9d9994acbd07.png)
 
@@ -190,11 +190,11 @@
 
   ![image](https://user-images.githubusercontent.com/101852647/167883824-a0899ecc-4ebf-40dd-a9b5-66695d7fbaa3.png)
   
-<br> 4.4 Khắc phục lỗi LFI <a name="tc"></a></br>
- - Đây là code khắc phục lỗi LFI. Chúng ta sẽ sử dụng hàm ` str_replace` để thay đổi một số ký tự `http://, https://, ../` trên url để các hacker không thể khai thác được:
+<br> 4.4 Khắc phục lỗi RFI <a name="tc"></a></br>
+ - Đây là code khắc phục lỗi RFI. Chúng ta sẽ sử dụng hàm ` str_replace` để thay đổi một số ký tự `http://, https://, ../` trên url để các hacker không thể khai thác được:
 
    ![image](https://user-images.githubusercontent.com/101852647/168013767-b5f6ae69-c584-4b23-968b-b49a771423c4.png)
 
- - Trang web vẫn bình thường cho đến khi chúng ta chèn thêm `http://www.google.com` hoặc `../../../../etc/paswd` thì nó sẽ thông báo lỗi:
+ - Trang web vẫn bình thường cho đến khi chúng ta chèn thêm `http://www.google.com` thì nó sẽ thông báo lỗi:
 
    ![image](https://user-images.githubusercontent.com/101852647/168014384-a891fa29-9e61-4c90-a730-9d9994acbd07.png)
