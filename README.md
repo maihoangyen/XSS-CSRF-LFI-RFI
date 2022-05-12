@@ -1,43 +1,67 @@
 # <div align="center"><p> XSS, CSRF, LFI, RFI </p></div>
  ## Họ và tên: Mai Thị Hoàng Yến
- ## Ngày báo cáo: Ngày 11/5/2022
+ ## Ngày báo cáo: Ngày 13/5/2022
  ### MỤC LỤC
- 1. [XSS](#gioithieu)
+ 1. [XSS](#1)
  
-     1.1 [Phương pháp manual](#tc)
+     1.1 [Khái niệm XSS](#11)
       
-     1.2 [Phương pháp sử dụng sqlmap](#pp)
+     1.2 [Các kiểu khai thác XSS](#12)
  
-     1.3 [Phương pháp sử dụng công cụ BurpSuite](#p3)
+     1.3 [Khi nào thì XSS sẽ xảy ra](#13)
+
+     1.4 [Cách khắc phục XSS](#14)
+      
+     1.5 [Mô phỏng code XSS](#15)
+ 
+     1.6 [Khắc phục code lỗi XSS](#16)
      
- 2. [CSRF](#mp) 
+ 2. [CSRF](#2) 
+
+     2.1 [Khái niệm CSRF](#21)
+      
+     2.2 [Cách thức tấn công CSRF](#22)
+ 
+     2.3 [Mô phỏng code lỗi CSRF](#23)
+
+     2.4 [Khắc phục code lỗi CSRF](#24)
        
- 3. [LFI](#lv)
+ 3. [LFI](#3)
 
-     3.1 [Code sửa lỗi sqli cho level2](#code1)
+     3.1 [Khái niệm LFI](#31)
       
-     3.2 [Code sửa lỗi sqli cho level1](#code2)
-     
-     3.3 [Các hàm sử dụng](#chsd)
+     3.2 [Cách thức tấn công LFI](#32)
+ 
+     3.3 [Mô phỏng code lỗi LFI](#33)
 
-  3. [RFI](#lv)
+     3.4 [Khắc phục code lỗi LFI](#34)
+
+  4. [RFI](#4)
+
+     4.1 [Khái niệm RFI](#41)
+      
+     4.2 [Cách thức tấn công RFI](#42)
+ 
+     4.3 [Mô phỏng code lỗi RFI](#43)
+
+     4.4 [Khắc phục code lỗi RFI](#44)
  
 ### Nội dung báo cáo 
-#### 1. XSS <a name="gioithieu"></a>
-<br> 1.1 Khái niệm XSS <a name="tc"></a></br>
+#### 1. XSS <a name="1"></a>
+<br> 1.1 Khái niệm XSS <a name="11"></a></br>
  - XSS là một lỗi bảo mật cho phép các hecker chèn các đoạn script nguy hiểm vào trong source code ứng dụng web. Nhằm thực thi các đoạn mã độc Javascript để chiếm phiên đăng nhập của người dùng.
  
-<br> 1.2 Các kiểu khai thác XSS <a name="tc"></a></br>
+<br> 1.2 Các kiểu khai thác XSS <a name="12"></a></br>
  - `Reflected XSS`: Reflected XSS là hình thức tấn công XSS được sử dụng nhiều nhất trong chiếm phiên làm việc của người dùng mạng. Qua đó, hacker đánh cắp các dữ liệu người dùng, chiếm quyền truy cập và hoạt động của họ trên website thông qua việc chia sẻ địa chỉ URL chứa mã độc và chờ nạn nhân cắn câu. Hình thức tấn công này thường nhắm vào một số ít nạn nhân.
  - `Stored XSS`: Không giống như Reflected XSS, Stored XSS nhắm đến khá nhiều nạn nhân cùng lúc. Với hình thức tấn công này, hacker chèn các mã độc vào database thông qua những dữ liệu đầu vào như form, input, textarea…Khi người dùng mạng truy cập website và tiến hành những thao tác liên quan đến các dữ liệu đã lưu, mã độc lập tức hoạt động trên trình duyệt của người dùng. 
  - `DOM Based XSS`: Dạng tấn công XSS thường gặp cuối cùng đó là DOM Based XSS. Đây là một dạng kỹ thuật dùng để khai thác XSS dựa vào cơ sở thay đổi HTML của tài liệu, nói cách khác là thay đổi các cấu trúc DOM. 
  
-<br> 1.3 Khi nào thì XSS sẽ xảy ra <a name="tc"></a></br>
+<br> 1.3 Khi nào thì XSS sẽ xảy ra <a name="13"></a></br>
  - Để một lỗi XSS xảy ra thì phải đáp ứng 2 điều kiện:
    -  Kẻ tấn công chèn các đoạn mã độc vào hệ thống web
    -  Người dùng truy cập vào trang web
    
-<br> 1.4 Cách khắc phục XSS <a name="tc"></a></br>
+<br> 1.4 Cách khắc phục XSS <a name="14"></a></br>
  - Chúng ta sẽ sử dụng các hàm sau đây để ngăn chặn xss:
    - Mã hóa HTML:
      - `htmlspecialchars`: sẽ chuyển đổi bất kỳ "ký tự đặc biệt HTML" nào thành các mã hóa HTML của chúng, có nghĩa là sau đó chúng sẽ không được xử lý dưới dạng HTML tiêu chuẩn. 
@@ -82,7 +106,7 @@
            
            `if (stripos ($default, "<script") !== false)`
 
-<br> 1.5 Mô phỏng code XSS <a name="tc"></a></br>
+<br> 1.5 Mô phỏng code XSS <a name="15"></a></br>
 - Đây là code lỗi XSS:
 
   ![image](https://user-images.githubusercontent.com/101852647/167766624-108c8ce9-20bb-4c73-9180-0599499ab63f.png)
@@ -103,7 +127,7 @@
   
   ![image](https://user-images.githubusercontent.com/101852647/167767649-0781af62-0bd8-4d00-b2ba-f03b38b7ca95.png)
 
-<br> 1.6 khắc phục code XSS <a name="tc"></a></br>
+<br> 1.6 Khắc phục code XSS <a name="16"></a></br>
  - Đây là code khắc phục lỗi XSS:
 
    ![image](https://user-images.githubusercontent.com/101852647/167768472-d622c437-0863-497b-b52a-c5c2984a9f3b.png)
@@ -120,16 +144,16 @@
 
    ![image](https://user-images.githubusercontent.com/101852647/167768787-ef7015ca-4070-403b-ae8d-075977648cee.png)
 
-#### 2. CSRF <a name="gioithieu"></a>
-<br> 2.1 Khái niệm CSRF <a name="tc"></a></br>
+#### 2. CSRF <a name="2"></a>
+<br> 2.1 Khái niệm CSRF <a name="21"></a></br>
  - CSRF là viết tắt của Cross-site Request Forgery là kỹ thuật tấn công giả mạo chính chủ thể của nó. CSRF nói đến việc tấn công vào chứng thực request trên web thông qua việc sử dụng Cookies.
  
-<br> 2.2 Cách thức tấn công CSRF <a name="tc"></a></br>
+<br> 2.2 Cách thức tấn công CSRF <a name="22"></a></br>
  - CSRF là một kiểu tấn công gây sự nhầm lẫn tăng tính xác thực và cấp quyền của nạn nhân khi gửi một request giả mạo đến máy chủ. Vì thế một lỗ hổng CSRF ảnh hưởng đến các quyền của người dùng ví dụ như quản trị viên, kết quả là chúng truy cập được đầy đủ quyền.
  - Khi gửi một request HTTP, trình duyệt của nạn nhân sẽ nhận về Cookie. Các cookie thường được dùng để lưu trữ một session để định danh người dùng không phải xác thực lại cho mỗi yêu cầu gửi lên.
  - Nếu phiên làm việc đã xác thực của nạn nhân được lưu trữ trong một Cookie vẫn còn hiệu lực và nếu ứng dụng không bảo mật dễ bị tấn công CSRF. Kẻ tấn công có thể sử dụng CSRF để chạy bất cứ requets nào với ứng dụng web mà ngay cả trang web không thể phân biệt được request nào là thực hay giả mạo.
  
-<br> 2.3 Mô phỏng code CSRF <a name="tc"></a></br>
+<br> 2.3 Mô phỏng code CSRF <a name="23"></a></br>
  - Đây là code lỗi CSRF:
 
    ![image](https://user-images.githubusercontent.com/101852647/168123625-a49403c8-81a8-4ac8-a6cd-206aceb85563.png)
@@ -168,7 +192,7 @@
 
    ![image](https://user-images.githubusercontent.com/101852647/168134979-c60e3881-5fa1-4186-898e-94f41da73391.png)
 
-<br> 2.3 Khắc phụ code CSRF <a name="tc"></a></br>
+<br> 2.4 Khắc phụ code CSRF <a name="24"></a></br>
  - Đây là code CSRF đã được fix. Ở đây sẽ sử dụng hàm `stripos` để kiểm tra điều kiện `if( stripos( $_SERVER[ 'HTTP_REFERER' ] ,$_SERVER[ 'SERVER_NAME' ]) !== false )` . Nó sẽ kiểm tra xem trình tham chiếu http có trong tên máy chủ hay không và ngược lại. Nếu có thì nó sex tiếp tục:
 
    ![image](https://user-images.githubusercontent.com/101852647/168137750-5d4a6d87-93ba-4c60-a56f-6e121e02254e.png)
@@ -189,14 +213,14 @@
 
   ![image](https://user-images.githubusercontent.com/101852647/168138900-1d80ebf3-dc27-413b-a404-4b0621e97ca8.png)
 
-#### 3. LFI <a name="gioithieu"></a>
-<br> 3.1 Khái niệm LFI <a name="tc"></a></br>
+#### 3. LFI <a name="3"></a>
+<br> 3.1 Khái niệm LFI <a name="31"></a></br>
  - Local file inclustion (LFI) là kĩ thuật đọc file trong hệ thống , lỗi này xảy ra thường sẽ khiến website bị lộ các thông tin nhảy cảm như là passwd, php.ini, access_log,config.php…
  
-<br> 3.2 Cách thức hoạt động LFI <a name="tc"></a></br>
+<br> 3.2 Cách thức hoạt động LFI <a name="32"></a></br>
  - Tấn công Local file inclusion Lỗ hổng Local file inclusion nằm trong quá trình include file cục bộ có sẵn trên server. Lỗ hổng xảy ra khi đầu vào người dùng chứa đường dẫn đến file bắt buộc phải include. Khi đầu vào này không được kiểm tra, tin tặc có thể sử dụng những tên file mặc định và truy cập trái phép đến chúng, tin tặc cũng có thể lợi dụng các thông tin trả về trên để đọc được những tệp tin nhạy cảm trên các thư mục khác nhau bằng cách chèn các ký tự đặc biệt như “/”, “../”, “-“.
 
-<br> 3.3 Mô phỏng code LFI <a name="tc"></a></br>
+<br> 3.3 Mô phỏng code LFI <a name="33"></a></br>
 - Đây là code lỗi LFI:
 
   ![image](https://user-images.githubusercontent.com/101852647/168015234-3ff28878-8afa-4f35-9116-da7362f35dce.png)
@@ -213,7 +237,7 @@
 
   ![image](https://user-images.githubusercontent.com/101852647/167999155-bced5b89-08d2-468b-8731-e806dbc20191.png)
   
-<br> 3.4 Khắc phục lỗi LFI <a name="tc"></a></br>
+<br> 3.4 Khắc phục lỗi LFI <a name="34"></a></br>
  - Đây là code khắc phục lỗi LFI. Chúng ta sẽ sử dụng hàm ` str_replace` để thay đổi một số ký tự `http://, https://, ../` trên url để các hacker không thể khai thác được:
 
    ![image](https://user-images.githubusercontent.com/101852647/168015562-1f783fb4-5d7f-4e70-82bc-e9d00f954095.png)
@@ -222,14 +246,14 @@
 
    ![image](https://user-images.githubusercontent.com/101852647/168018052-5df140bf-6e0f-4e00-a5da-6c44417fa015.png) 
 
-#### 4. RFI <a name="gioithieu"></a>
-<br> 4.1 Khái niệm RFI <a name="tc"></a></br>
+#### 4. RFI <a name="4"></a>
+<br> 4.1 Khái niệm RFI <a name="41"></a></br>
  - Remote File Inclusion còn được viết tắt là RFI cho phép kẻ tấn công nhúng một mã độc hại được tuỳ chỉnh trên trang web hoặc máy chủ bằng cách sử dụng các tập lệnh . RFI còn cho phép tải lên một tệp nằm trên máy chủ khác được chuyển đến dưới dạng hàm PHP ( include, include_once, require, or require_once)
 
-<br> 4.2 Cách thức hoạt động RFI <a name="tc"></a></br>
+<br> 4.2 Cách thức hoạt động RFI <a name="42"></a></br>
  - Lỗ hổng Remote file inclusion RFI cho phép tin tặc include và thực thi trên máy chủ mục tiêu một tệp tin được lưu trữ từ xa. Tin tặc có thể sử dụng RFI để chạy một mã độc trên cả máy của người dùng và phía máy chủ. Ảnh hưởng của kiểu tấn công này thay đổi từ đánh cắp tạm thời session token hoặc các dữ liệu của người dùng cho đến việc tải lên các webshell, mã độc nhằm đến xâm hại hoàn toàn hệ thống máy chủ. 
  - Khai thác lỗ hổng Remote file inclusion trong PHP PHP có nguy cơ cao bị tấn công RFI do việc sử dụng lệnh include rất nhiều và thiết đặt mặc định của server cũng ảnh hưởng một phần nào đó. Để bắt đầu chúng ta cần tìm nơi chứa file include trong ứng dụng phụ thuộc vào dữ liệu đầu vào người dùng. 
-<br> 4.3 Mô phỏng code RFI <a name="tc"></a></br>
+<br> 4.3 Mô phỏng code RFI <a name="43"></a></br>
 - Đây là code lỗi RFI:
 
   ![image](https://user-images.githubusercontent.com/101852647/167880954-9c5c97bc-696f-45c9-b8e5-27daefb6140a.png)
@@ -250,7 +274,7 @@
 
   ![image](https://user-images.githubusercontent.com/101852647/167883824-a0899ecc-4ebf-40dd-a9b5-66695d7fbaa3.png)
   
-<br> 4.4 Khắc phục lỗi RFI <a name="tc"></a></br>
+<br> 4.4 Khắc phục lỗi RFI <a name="44"></a></br>
  - Đây là code khắc phục lỗi RFI. Chúng ta sẽ sử dụng hàm ` str_replace` để thay đổi một số ký tự `http://, https://, ../` trên url để các hacker không thể khai thác được:
 
    ![image](https://user-images.githubusercontent.com/101852647/168013767-b5f6ae69-c584-4b23-968b-b49a771423c4.png)
