@@ -129,6 +129,45 @@
  - Khi gửi một request HTTP, trình duyệt của nạn nhân sẽ nhận về Cookie. Các cookie thường được dùng để lưu trữ một session để định danh người dùng không phải xác thực lại cho mỗi yêu cầu gửi lên.
  - Nếu phiên làm việc đã xác thực của nạn nhân được lưu trữ trong một Cookie vẫn còn hiệu lực và nếu ứng dụng không bảo mật dễ bị tấn công CSRF. Kẻ tấn công có thể sử dụng CSRF để chạy bất cứ requets nào với ứng dụng web mà ngay cả trang web không thể phân biệt được request nào là thực hay giả mạo.
  
+<br> 2.3 Mô phỏng code CSRF <a name="tc"></a></br>
+ - Đây là code lỗi CSRF:
+
+   ![image](https://user-images.githubusercontent.com/101852647/168123625-a49403c8-81a8-4ac8-a6cd-206aceb85563.png)
+   
+ - Đây là giao diện trang web có lỗi CSRF:
+
+   ![image](https://user-images.githubusercontent.com/101852647/168123848-5904fc0e-05b7-44cf-b7e5-2192dc244813.png)
+
+   ![image](https://user-images.githubusercontent.com/101852647/168123935-c2bca24e-06e9-44d4-8586-b182244163ee.png)
+
+ - Bây giờ để khai thác CSRF chúng ta sẽ thử thay đổi password `admin12345` và chúng ta đã thay đổi được mật khẩu:
+
+   ![image](https://user-images.githubusercontent.com/101852647/168130981-f333efdd-8a12-4166-a9e0-73751696dd5d.png)
+   
+   ![image](https://user-images.githubusercontent.com/101852647/168131045-b600211d-4777-4ec9-a171-0cec00de2672.png)
+
+ - Tiếp theo chúng ta sẽ mở mã nguồn trang web lên và copy form vào notepad Sau đó sẽ sửa chúng lại như hình bên dưới. Lưu với tên là `click.html`:
+
+   ![image](https://user-images.githubusercontent.com/101852647/168131351-f8d7ecb8-9331-4fd9-8be7-83023310916f.png)
+
+   ![image](https://user-images.githubusercontent.com/101852647/168134022-9d01d45d-16d5-4d71-9759-44919234aa07.png)
+
+ - Mở trang web vừa tạo lên và dưới đây là giao diện của trang web:
+
+   ![image](https://user-images.githubusercontent.com/101852647/168134193-7449704f-4c33-417f-8332-6cd02639ba46.png)
+
+ - Sau khi click vào thì nó sẽ tự động thay đổi password chúng ta thành `hacker`:
+
+   ![image](https://user-images.githubusercontent.com/101852647/168134416-8debcab6-6afa-43ca-be1e-d65988741fad.png)
+
+ - Bây giờ chúng ta sẽ đăng nhập lại xem thử có đăng nhập thành công với password `hacker ` không.
+
+   ![image](https://user-images.githubusercontent.com/101852647/168134758-b3ddfb73-bd12-43d9-aaf4-ba88568e01c2.png)
+
+ - Sau khi chúng ta nhấn button đăng nhập thì nó trả về cho chúng ta trang chủ. Như vậy là chúng ta đã khai thác thành công rồi.
+
+   ![image](https://user-images.githubusercontent.com/101852647/168134979-c60e3881-5fa1-4186-898e-94f41da73391.png)
+
 #### 3. LFI <a name="gioithieu"></a>
 <br> 3.1 Khái niệm LFI <a name="tc"></a></br>
  - Local file inclustion (LFI) là kĩ thuật đọc file trong hệ thống , lỗi này xảy ra thường sẽ khiến website bị lộ các thông tin nhảy cảm như là passwd, php.ini, access_log,config.php…
