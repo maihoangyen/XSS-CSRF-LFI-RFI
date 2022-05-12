@@ -168,6 +168,27 @@
 
    ![image](https://user-images.githubusercontent.com/101852647/168134979-c60e3881-5fa1-4186-898e-94f41da73391.png)
 
+<br> 2.3 Khắc phụ code CSRF <a name="tc"></a></br>
+ - Đây là code CSRF đã được fix:
+
+   ![image](https://user-images.githubusercontent.com/101852647/168137750-5d4a6d87-93ba-4c60-a56f-6e121e02254e.png)
+
+ - Sau khi fix xong chúng ta sẽ thử thay đổi password lại xem thử chúng ta có thay đổi được hay không. Nhập mật khẩu mới là `123345` và như chúng ta thấy thì đã thay đổi thành công.
+
+  ![image](https://user-images.githubusercontent.com/101852647/168138079-f8f9d87d-52b2-456e-99bd-538a4512344a.png)
+
+  ![image](https://user-images.githubusercontent.com/101852647/168138205-b2f141ee-a75b-49d3-897c-5497ba9c066a.png)
+
+ - Tiếp theo chúng ta làm tương tự như ở phía trên mô phỏng code lỗi CSRF chúng ta sẽ copy form và sửa chúng trên notepad. 
+
+  ![image](https://user-images.githubusercontent.com/101852647/168138615-a32112bd-995d-4a8f-acae-88ebafbcb1b5.png)
+
+ - Mở trang web lên là click vào `change` nhưng rất tiếc là lần này chúng ta không thể thay đổi được password.
+
+  ![image](https://user-images.githubusercontent.com/101852647/168139000-5a2ab595-b343-45e9-b7df-cd184191b005.png)
+
+  ![image](https://user-images.githubusercontent.com/101852647/168138900-1d80ebf3-dc27-413b-a404-4b0621e97ca8.png)
+
 #### 3. LFI <a name="gioithieu"></a>
 <br> 3.1 Khái niệm LFI <a name="tc"></a></br>
  - Local file inclustion (LFI) là kĩ thuật đọc file trong hệ thống , lỗi này xảy ra thường sẽ khiến website bị lộ các thông tin nhảy cảm như là passwd, php.ini, access_log,config.php…
