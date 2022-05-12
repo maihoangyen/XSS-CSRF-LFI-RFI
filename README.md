@@ -136,6 +136,27 @@
 <br> 3.2 Cách thức hoạt động LFI <a name="tc"></a></br>
  - Tấn công Local file inclusion Lỗ hổng Local file inclusion nằm trong quá trình include file cục bộ có sẵn trên server. Lỗ hổng xảy ra khi đầu vào người dùng chứa đường dẫn đến file bắt buộc phải include. Khi đầu vào này không được kiểm tra, tin tặc có thể sử dụng những tên file mặc định và truy cập trái phép đến chúng, tin tặc cũng có thể lợi dụng các thông tin trả về trên để đọc được những tệp tin nhạy cảm trên các thư mục khác nhau bằng cách chèn các ký tự đặc biệt như “/”, “../”, “-“.
 
+<br> 3.3 Mô phỏng code LFI <a name="tc"></a></br>
+- Đây là code lỗi LFI:
+
+  ![image](https://user-images.githubusercontent.com/101852647/167880954-9c5c97bc-696f-45c9-b8e5-27daefb6140a.png)
+  
+- Đây là giao diện trang web có lỗi RFI:
+
+  ![image](https://user-images.githubusercontent.com/101852647/167999472-495509d4-60b0-4848-ac9c-831dafe2775d.png)
+
+- Để có thể thực hiện tấn công RFI thì đầu tiên chúng ta thử nhúng các url vào trang web. Ví dụ như bây giờ chúng ta thử chúng url `http://www.google.com`. Kết quả bên dưới cho chúng ta thấy là trang web này cho phép tải lên các trang web khác. Vì vậy, mà chúng ta có thể lợi dụng lỗ hổng này để tải nhúng các lệnh php mà mình muốn lên trang web và thực thi lệnh đó.
+
+ ![image](https://user-images.githubusercontent.com/101852647/167882234-c89a9ad9-faf0-4612-8889-220b72dc7e60.png)
+
+- Tiếp theo chúng ta sẽ tạo một file `hacker.html ` với nội dung như sau:
+
+  ![image](https://user-images.githubusercontent.com/101852647/167883519-80552706-8fa9-4125-8782-d5eb30cc9316.png)
+  
+- Bây giờ chúng ta thử nhúng file này vào trang web và thu được kết quả:
+
+  ![image](https://user-images.githubusercontent.com/101852647/167999155-bced5b89-08d2-468b-8731-e806dbc20191.png)
+  
 #### 4. RFI <a name="gioithieu"></a>
 <br> 4.1 Khái niệm RFI <a name="tc"></a></br>
  - Remote File Inclusion còn được viết tắt là RFI cho phép kẻ tấn công nhúng một mã độc hại được tuỳ chỉnh trên trang web hoặc máy chủ bằng cách sử dụng các tập lệnh . RFI còn cho phép tải lên một tệp nằm trên máy chủ khác được chuyển đến dưới dạng hàm PHP ( include, include_once, require, or require_once)
