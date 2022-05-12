@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+ 	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+	<div class="container">
+		<header>
+			</script>
+				<a href="#"><img src="img/hy.jpg" alt="" class="imageChange" style="border: 0.5px #d4d4d4 solid;
+    				padding: 0.5px;
+    				border-radius:50%;
+    				-moz-border-radius:50%;
+    				-webkit-border-radius:50%;"></a>		
+									
+			<div class="topnav-right">
+				
+    					<a href="login.html">Đăng nhập</a>
+    					<a href="signup.php">Đăng ký</a>
+    					<a href="logout.php">Đăng xuất</a>
+    				
+  			</div>
+		</header>
+		<nav>
+			<div class="menu">
+				<ul>
+					<li><a href="index.html">Trang chủ</a></li>
+					<li><a href="upload.php">Upload</a></li>
+					<li><a href="download.php">Dowload</a></li>
+					<li><a href="comment.php">Bình luận</a></li>
+				</ul>
+				
+			</div>
+			<div  class="search">
+				<form action="search.php" method="get" >
+               	<input type="text" name="search" />
+               	<input type="submit" name="ok" value="Tìm kiếm" style="background:#008B8B; color: #fff;"/>
+            </form>
+			</div>
+
+
+		</nav>
+		<div id="slide">
+			<a href=""><img src="img/slide.jpg" alt="" style="width: 980px; height: 200px;"></a>
+		</div>
+		<article>
+			<h3>
+				Tin tức An ninh  
+			</h3>
+			<div class="new">
+				<div class="new_list">
+					<h4>
+						<a href="https://whitehat.vn/threads/parse-server-ton-tai-lo-hong-thuc-thi-ma-tu-xa-dac-biet-nghiem-trong.16384/">Parse Server tồn tại lỗ hổng thực thi mã từ xa đặc biệt nghiêm trọng</a>
+					</h4>
+					<img src="img/ps.jpg" alt=""style="width:270px; height: 200px;">
+					<div class="content"style="height: 90px;background: #ffff;">
+						Lỗ hổng RCE tồn tại trong gói npm Parse Server. Ba nhà nghiên cứu Mikhail Shcherbakov, Cristian-Alexandru STAICU và Musard Balliu đã nhận thấy lỗ hổng prototype pollution trong tệp DatabaseController.js. Lỗi được xác nhận tồn tại trong phiên bản Ubuntu và Windows.
+					</div>
+				</div>
+				<div class="new_list">
+					<h4>
+						<a href="https://whitehat.vn/threads/loi-phan-tich-cu-phap-trong-openssl-co-the-gay-tu-choi-dich-vu.16379/">Lỗi phân tích cú pháp trong OpenSSL có thể gây từ chối dịch vụ</a>
+					</h4>
+					<img src="img/op.jpg" alt="" style="width:270px;height: 200px;">
+					<div class="content"style="height: 90px; background: #ffff;">
+						Các cuộc tấn công từ chối dịch vụ có thể không phải là vấn đề bảo mật tệ hại nhất. Tuy nhiên, nó vẫn có thể gây ra gián đoạn kinh doanh, ảnh hưởng tài chính lâu dài và giảm uy tín thương hiệu. Đặc biệt là với OpenSSL, một thư viện giao tiếp an toàn phổ biến được nhiều nền tảng trực tuyến lớn sử dụng. 
+					</div>
+				</div>
+				<div class="new_list" id="fix">
+					<h4>
+						<a href="https://whitehat.vn/threads/hacker-tich-cuc-khai-thac-cac-lo-hong-trong-cong-cu-giam-sat-zabbix.16320/">Hacker tích cực khai thác các lỗ hổng trong công cụ giám sát Zabbix</a>
+					</h4>
+					<img src="img/Za.png" alt=""style="width:270px;height: 200px;">
+					<div class="content" style="height: 90px;background: #ffff;">
+						Được đánh số là CVE-2022-23131 và CVE-2022-23134, hai lỗ hổng này được xác định bởi các nhà nghiên cứu an ninh mạng của SonarSource. Các lỗ hổng chỉ gây ảnh hưởng đến các trường hợp sử dụng xác thực đăng nhập một lần (SSO) bằng Security Assertion Markup Language (SAML).
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</article>
+		<article>
+			<h3>
+				Tin tức xã hội
+			</h3>
+			<div class="new">
+				<div class="new_list" style="margin-bottom: 10px;">
+					<h4>
+						<a href="https://xahoi.com.vn/tong-thong-zelensky-ukraine-khong-the-dap-ung-nhung-yeu-cau-trong-toi-hau-thu-cua-nga-382066.html">Ukraine không thể đáp ứng những yêu cầu trong tối hậu thư của Nga</a>
+					</h4>
+					<img src="img/tt.jpg" alt=""style="width:270px; height: 200px;">
+					<div class="content" style="height: 90px;background: #ffff;">
+						Hãng Ukrinform hôm 21/3 đưa tin, trong một cuộc phỏng vấn với truyền thông châu Âu gần đây, Tổng thống Ukraine Volodymyr Zelensky đã nói rằng Kyiv "không thể đáp ứng những yêu cầu trong tối hậu thư của Liên bang Nga".
+					</div>
+				</div>
+				<div class="new_list" style="margin-bottom: 10px;">
+					<h4>
+						<a href="https://bnews.vn/ha-noi-hon-nua-so-xa-phuong-co-cap-do-dich-covid-19-la-cap-3/235459.html">Hà Nội: Hơn nửa số xã, phường có cấp độ dịch COVID-19 là cấp 3</a>
+					</h4>
+					<img src="img/cv.jpg" alt="" style="width:270px;height: 200px;">
+					<div class="content"style="height: 90px;background: #ffff;">
+						Tin từ Sở Y tế Hà Nội, từ 18 giờ ngày 4/3/2022 đến 18 giờ ngày 5/3/2022, Hà Nội ghi nhận 25.013 ca mắc COVID-19, trong đó có 9.407 ca tại cộng đồng; 15.606 ca đã cách ly.Bệnh nhân phân bố tại 541 xã, phường, thị trấn thuộc 30/30 quận, huyện, thị xã của thành phố. 
+					</div>
+				</div>
+				<div class="new_list" id="fix" style="margin-bottom: 10px;">
+					<h4>
+						<a href="https://www.24h.com.vn/cong-nghe-thong-tin/tai-sao-nga-mem-mong-voi-mang-xa-hoi-telegram-c55a1342378.html">Tại sao Nga mềm mỏng với mạng xã hội Telegram?</a>
+					</h4>
+					<img src="img/tl.png" alt=""style="width:270px;height: 200px;">
+					<div class="content" style="height: 90px;background: #ffff;">
+						Các kênh tin tức, chính trị và bình luận tiếng Nga trên nền tảng tin nhắn và mạng xã hội Telegram đã tăng gấp 2, thậm chí gấp 3 lần số lượt đăng ký theo dõi trong những tuần gần đây, sau khi Nga tấn công quân sự Ukraine và bắt đầu hạn chế truy cập Facebook và Twitter trong nước. 
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</article>
+		<footer>
+			By: Mai Thị Hoàng Yến
+		</footer>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+*{
+	padding: 0;
+	margin: 0;
+	font-famaly: "Roboto", sans-serif;
+}
+.container{
+	width: 980px;
+	margin: 0 auto;
+}
+
+header{
+	width: 980px;
+	height: 100px;
+	background: #4682B4;
+}
+.topnav-right {
+  	float: right;
+ 	margin: 0 10px;
+
+}
+header .topnav-right a{
+	color: #E0FFFF;
+	font-size: 18px;
+	padding: 0 15px;
+	text-decoration: none;
+}
+.imageChange{
+	max-width: 98px;
+}
+nav{
+	height: 35px;
+	background: #B0E0E6;
+	margin-bottom: 5px;
+}
+nav .menu ul{
+	list-style: none;
+}
+nav .menu ul li{
+	float: left;
+	line-height: 35px;
+	padding: 0 15px;
+}
+nav .menu ul li a{
+	color: #00008B;
+	font-size: 18px;
+	text-decoration: none;
+}
+nav .search{
+	line-height: 35px;
+	float: right;
+	margin-right: 25px;
+}
+nav .search button{
+	background-color: #008080;
+	color: #E0FFFF;
+}
+article h3{
+	text-align: center;
+	padding: 15px 0;
+	color: #FF0000;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+article .new .new_list{
+	width: 28%;
+	padding: 1%;
+	float: left;
+	border: 1px solid #ccc;
+	margin-right: 4%;
+}
+#fix{
+	margin-right: 0;
+}
+article .new .new_list h4{
+	font-size: 16px;
+	color: #DC143C;
+}
+article .new .new_list img{
+	margin: 10px auto;
+}
+article .new .new_list .content{
+	font-size: 13px;
+	overflow: hidden;
+	background: #fff;
+}
+article .new{
+	width: 980px;
+}
+footer{
+	height: 40px;
+	background: #B0E0E6;
+	line-height: 40px;
+	text-align: center;
+	color: #00008B;
+	font-size: 18px;
+	font-weight: bold;
+}
