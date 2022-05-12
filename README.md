@@ -153,6 +153,15 @@
 
   ![image](https://user-images.githubusercontent.com/101852647/167999155-bced5b89-08d2-468b-8731-e806dbc20191.png)
   
+<br> 3.4 Khắc phục lỗi LFI <a name="tc"></a></br>
+ - Đây là code khắc phục lỗi LFI. Chúng ta sẽ sử dụng hàm ` str_replace` để thay đổi một số ký tự `http://, https://, ../` trên url để các hacker không thể khai thác được:
+
+   ![image](https://user-images.githubusercontent.com/101852647/168013767-b5f6ae69-c584-4b23-968b-b49a771423c4.png)
+
+ - Trang web vẫn bình thường cho đến khi chúng ta chèn thêm `http://www.google.com` hoặc `../../../../etc/paswd` thì nó sẽ thông báo lỗi:
+
+   ![image](https://user-images.githubusercontent.com/101852647/168014384-a891fa29-9e61-4c90-a730-9d9994acbd07.png)
+
 #### 4. RFI <a name="gioithieu"></a>
 <br> 4.1 Khái niệm RFI <a name="tc"></a></br>
  - Remote File Inclusion còn được viết tắt là RFI cho phép kẻ tấn công nhúng một mã độc hại được tuỳ chỉnh trên trang web hoặc máy chủ bằng cách sử dụng các tập lệnh . RFI còn cho phép tải lên một tệp nằm trên máy chủ khác được chuyển đến dưới dạng hàm PHP ( include, include_once, require, or require_once)
@@ -180,5 +189,12 @@
 - Bây giờ chúng ta thử nhúng file này vào trang web và thu được kết quả:
 
   ![image](https://user-images.githubusercontent.com/101852647/167883824-a0899ecc-4ebf-40dd-a9b5-66695d7fbaa3.png)
+  
+<br> 4.4 Khắc phục lỗi LFI <a name="tc"></a></br>
+ - Đây là code khắc phục lỗi LFI. Chúng ta sẽ sử dụng hàm ` str_replace` để thay đổi một số ký tự `http://, https://, ../` trên url để các hacker không thể khai thác được:
 
- 
+   ![image](https://user-images.githubusercontent.com/101852647/168013767-b5f6ae69-c584-4b23-968b-b49a771423c4.png)
+
+ - Trang web vẫn bình thường cho đến khi chúng ta chèn thêm `http://www.google.com` hoặc `../../../../etc/paswd` thì nó sẽ thông báo lỗi:
+
+   ![image](https://user-images.githubusercontent.com/101852647/168014384-a891fa29-9e61-4c90-a730-9d9994acbd07.png)
