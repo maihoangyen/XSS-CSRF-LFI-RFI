@@ -169,7 +169,7 @@
    ![image](https://user-images.githubusercontent.com/101852647/168134979-c60e3881-5fa1-4186-898e-94f41da73391.png)
 
 <br> 2.3 Khắc phụ code CSRF <a name="tc"></a></br>
- - Đây là code CSRF đã được fix:
+ - Đây là code CSRF đã được fix. Ở đây sẽ sử dụng hàm `stripos` để kiểm tra điều kiện `if( stripos( $_SERVER[ 'HTTP_REFERER' ] ,$_SERVER[ 'SERVER_NAME' ]) !== false )` . Nó sẽ kiểm tra xem trình tham chiếu http có trong tên máy chủ hay không và ngược lại. Nếu có thì nó sex tiếp tục:
 
    ![image](https://user-images.githubusercontent.com/101852647/168137750-5d4a6d87-93ba-4c60-a56f-6e121e02254e.png)
 
