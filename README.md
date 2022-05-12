@@ -141,19 +141,15 @@
 
   ![image](https://user-images.githubusercontent.com/101852647/167880954-9c5c97bc-696f-45c9-b8e5-27daefb6140a.png)
   
-- Đây là giao diện trang web có lỗi RFI:
+- Đây là giao diện trang web có lỗi LFI:
 
   ![image](https://user-images.githubusercontent.com/101852647/167999472-495509d4-60b0-4848-ac9c-831dafe2775d.png)
 
-- Để có thể thực hiện tấn công RFI thì đầu tiên chúng ta thử nhúng các url vào trang web. Ví dụ như bây giờ chúng ta thử chúng url `http://www.google.com`. Kết quả bên dưới cho chúng ta thấy là trang web này cho phép tải lên các trang web khác. Vì vậy, mà chúng ta có thể lợi dụng lỗ hổng này để tải nhúng các lệnh php mà mình muốn lên trang web và thực thi lệnh đó.
+- Để có thể thực hiện tấn công LFI thì chúng ta có thể thay đổi URL trông giống như sau:
 
- ![image](https://user-images.githubusercontent.com/101852647/167882234-c89a9ad9-faf0-4612-8889-220b72dc7e60.png)
-
-- Tiếp theo chúng ta sẽ tạo một file `hacker.html ` với nội dung như sau:
-
-  ![image](https://user-images.githubusercontent.com/101852647/167883519-80552706-8fa9-4125-8782-d5eb30cc9316.png)
+  ![image](https://user-images.githubusercontent.com/101852647/168001508-e3f75bd3-8084-4f68-bd94-937761a1c639.png)
   
-- Bây giờ chúng ta thử nhúng file này vào trang web và thu được kết quả:
+- Nếu trong trường hợp không lọc thích hợp, máy chủ sẽ hiển thị nội dung nhạy cảm của tệp /etc/passwd:
 
   ![image](https://user-images.githubusercontent.com/101852647/167999155-bced5b89-08d2-468b-8731-e806dbc20191.png)
   
