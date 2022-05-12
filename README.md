@@ -158,9 +158,9 @@
 
    ![image](https://user-images.githubusercontent.com/101852647/168015562-1f783fb4-5d7f-4e70-82bc-e9d00f954095.png)
 
- - Trang web vẫn bình thường cho đến khi chúng ta chèn thêm `../../../../etc/paswd` thì nó sẽ thông báo lỗi:
+ - Trang web vẫn bình thường cho đến khi chúng ta chèn thêm `../../../../etc/paswd` thì nó sẽ không hiển thị nội dung của tệp /etc/passwd:
 
-   ![image](https://user-images.githubusercontent.com/101852647/168014384-a891fa29-9e61-4c90-a730-9d9994acbd07.png)
+   ![image](https://user-images.githubusercontent.com/101852647/168018052-5df140bf-6e0f-4e00-a5da-6c44417fa015.png) 
 
 #### 4. RFI <a name="gioithieu"></a>
 <br> 4.1 Khái niệm RFI <a name="tc"></a></br>
