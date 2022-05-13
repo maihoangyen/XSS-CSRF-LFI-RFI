@@ -51,7 +51,7 @@
 ### Nội dung báo cáo 
 #### 1. XSS <a name="1"></a>
 <br> 1.1 Khái niệm XSS <a name="11"></a></br>
- - XSS là một lỗi bảo mật cho phép các hecker chèn các đoạn script nguy hiểm vào trong source code ứng dụng web. Nhằm thực thi các đoạn mã độc Javascript để chiếm phiên đăng nhập của người dùng.
+ - XSS là một lỗi bảo mật cho phép các hacker chèn các đoạn script nguy hiểm vào trong source code ứng dụng web. Nhằm thực thi các đoạn mã độc Javascript để chiếm phiên đăng nhập của người dùng.
  
 <br> 1.2 Các kiểu khai thác XSS <a name="12"></a></br>
 
@@ -75,9 +75,9 @@
    </tr>
  </table>
  
- - `Reflected XSS`: Reflected XSS là hình thức tấn công XSS được sử dụng nhiều nhất trong chiếm phiên làm việc của người dùng mạng. Qua đó, hacker đánh cắp các dữ liệu người dùng, chiếm quyền truy cập và hoạt động của họ trên website thông qua việc chia sẻ địa chỉ URL chứa mã độc và chờ nạn nhân cắn câu. Hình thức tấn công này thường nhắm vào một số ít nạn nhân.
+ - `Reflected XSS`: Reflected XSS là hình thức tấn công XSS được sử dụng nhiều nhất trong chiếm phiên làm việc của người dùng mạng. Qua đó, hacker đánh cắp các dữ liệu người dùng, chiếm quyền truy cập và hoạt động của họ trên website thông qua việc chia sẻ địa chỉ URL chứa mã độc và chờ nạn nhân cắn câu.
  - `Stored XSS`: Không giống như Reflected XSS, Stored XSS nhắm đến khá nhiều nạn nhân cùng lúc. Với hình thức tấn công này, hacker chèn các mã độc vào database thông qua những dữ liệu đầu vào như form, input, textarea…Khi người dùng mạng truy cập website và tiến hành những thao tác liên quan đến các dữ liệu đã lưu, mã độc lập tức hoạt động trên trình duyệt của người dùng. 
- - `DOM Based XSS`: Dạng tấn công XSS thường gặp cuối cùng đó là DOM Based XSS. Đây là một dạng kỹ thuật dùng để khai thác XSS dựa vào cơ sở thay đổi HTML của tài liệu, nói cách khác là thay đổi các cấu trúc DOM. 
+ - `DOM Based XSS`: Đây là một dạng kỹ thuật dùng để khai thác XSS dựa vào thay đổi HTML của tài liệu, nói cách khác là thay đổi các cấu trúc DOM. 
  
 <br> 1.3 Khi nào thì XSS sẽ xảy ra <a name="13"></a></br>
  - Để một lỗi XSS xảy ra thì phải đáp ứng 2 điều kiện:
