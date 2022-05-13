@@ -63,15 +63,15 @@
    </tr>
    <tr>
         <td ><b>Reflected XSS</b></td>
-        <td ><b>Chi tiết liên quan đến từng ràng buộc CHECK</b></td>      
+        <td ><b>mã độc hại xuất phát từ HTTP request chứ không lưu trên database</b></td>      
    </tr>
    <tr>
         <td ><b>Stored XSS</b></td>
-        <td ><b>Chi tiết liên quan đến các cột có kiểu dữ liệu bí danh</b></td>      
+        <td ><b>mã độc hại xuất phát từ database</b></td>      
    </tr>
    <tr>
         <td ><b>DOM Based XSS</b></td>
-        <td ><b>Chi tiết liên quan đến các cột có kiểu dữ liệu bí danh</b></td>      
+        <td ><b>lỗ hổng tồn tại trong mã máy khách chứ không phải máy chủ</b></td>      
    </tr>
  </table>
  - `Reflected XSS`: Reflected XSS là hình thức tấn công XSS được sử dụng nhiều nhất trong chiếm phiên làm việc của người dùng mạng. Qua đó, hacker đánh cắp các dữ liệu người dùng, chiếm quyền truy cập và hoạt động của họ trên website thông qua việc chia sẻ địa chỉ URL chứa mã độc và chờ nạn nhân cắn câu. Hình thức tấn công này thường nhắm vào một số ít nạn nhân.
