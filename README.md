@@ -146,6 +146,7 @@
    - `1`: Bật tính năng lọc XSS. Tính năng này thường sẽ là mặc định trong trình duyệt chúng ta. Nếu phát hiện một cuộc tấn công XSS thì trình duyệt sẽ loại bỏ các phần không an toàn.
    - `1; mode=block`: Bật tính năng lọc XSS. Nếu có một cuộc tấn công XSS thay vì phát hiện như tham số `1` ở trên nó sẽ chặn luôn.
    - `1; report=<reporting-uri>`: Bật tính năng lọc XSS, phát hiện, loại bỏ các phần không an toàn và báo cáo vi phạm.
+
 <br> 1.7 Mô phỏng XSS đánh cắp phiên khi Login vào trang web. Cookie sẽ được điều hướng về 1 host dựng sẵn <a name="17"></a></br>
  - Đầu tiên chúng ta sẽ tạo 2 file ` hacker.php` và `hacker.txt` rồi sau đó đẩy nó lên host. Đây sẽ là nơi hacker lưu trữ các cookie của người dùng. File ` hacker.php` dùng để lấy cookie rồi sau đó ghi nó vào trong file `hacker.txt`. Còn file ` hacker.txt` để lưu trữ cookies.
 
