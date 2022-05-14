@@ -128,8 +128,16 @@
      - Ví dụ: 
            
            `if (stripos ($default, "<script") !== false)`
+           
+<br> 1.5 Cách sử dụng XSS để đánh cắp cookies người dùng <a name="14"></a></br>
+ - Đầu tiên, hacker sẽ tạo một host để lưu trữ các cookies người dùng.
+ - Tiếp theo sẽ chèn một đoạn script có chứa link host vào database của web server.
+ - Sau đó, người dùng nhấn vào link host của hacker thì cookies của người dùng sẽ được hacker đánh cắp.
+ - Cuối cùng, hacker lấy cookies người dùng để đánh cắp thông tin hoặc mạo danh người dùng.
 
-<br> 1.5 Mô phỏng code XSS <a name="15"></a></br>
+<br> 1.6 Điều chỉnh các tham số header <a name="14"></a></br>
+
+<br> 1.7 Mô phỏng code XSS <a name="15"></a></br>
 - Đây là code lỗi XSS:
 
   ![image](https://user-images.githubusercontent.com/101852647/167766624-108c8ce9-20bb-4c73-9180-0599499ab63f.png)
@@ -150,7 +158,7 @@
   
   ![image](https://user-images.githubusercontent.com/101852647/167767649-0781af62-0bd8-4d00-b2ba-f03b38b7ca95.png)
 
-<br> 1.6 Khắc phục code XSS <a name="16"></a></br>
+<br> 1.8 Khắc phục code XSS <a name="16"></a></br>
  - Đây là code khắc phục lỗi XSS:
 
    ![image](https://user-images.githubusercontent.com/101852647/167768472-d622c437-0863-497b-b52a-c5c2984a9f3b.png)
