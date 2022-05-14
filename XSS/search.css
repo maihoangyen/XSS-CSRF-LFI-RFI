@@ -1,0 +1,48 @@
+.box-search{
+	padding: 10px;
+	margin: 0 auto;
+	font-size: 16px;
+	width: 980px;
+	height: auto;	
+}
+.box-item{
+	width: 97%;
+	height: 200px;
+	border: 1px solid gray;
+	box-shadow: 5px 2px gainsboro;
+	margin: 5px 10px;
+	border-radius: 10px;
+}
+.img{
+	width: 180px;
+	height: 200px;
+	margin: 10px;
+	float: left;
+}
+.new-content{
+	width: 450px;
+	height: 190px;
+	float: left;
+}
+.title{
+	margin: 0;
+	color: blue;
+	text-align: justify;
+	text-align: center;
+	margin-top: 10px;
+	
+}
+.descr{
+	text-align: justify;
+	margin-left: 35%;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	padding-right: 10px;
+}
+.form-kq{
+	text-align: center;
+}
+.home{
+	text-align: center;
+	
+}
