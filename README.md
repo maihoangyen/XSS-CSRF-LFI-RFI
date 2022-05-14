@@ -12,9 +12,15 @@
 
      1.4 [Cách khắc phục XSS](#14)
       
-     1.5 [Mô phỏng code XSS](#15)
+     1.5 [Cách sử dụng XSS để đánh cắp cookies người dùng](#15)
  
-     1.6 [Khắc phục code lỗi XSS](#16)
+     1.6 [Điều chỉnh các tham số header](#16)
+
+     1.7 [Mô phỏng XSS đánh cắp phiên khi Login vào trang web. Cookie sẽ được điều hướng về 1 host dựng sẵn](#17)
+      
+     1.8 [Mô phỏng code XSS](#18)
+ 
+     1.9 [Khắc phục code lỗi XSS](#19)
      
  2. [CSRF](#2) 
 
@@ -129,15 +135,18 @@
            
            `if (stripos ($default, "<script") !== false)`
            
-<br> 1.5 Cách sử dụng XSS để đánh cắp cookies người dùng <a name="14"></a></br>
+<br> 1.5 Cách sử dụng XSS để đánh cắp cookies người dùng <a name="15"></a></br>
  - Đầu tiên, hacker sẽ tạo một host để lưu trữ các cookies người dùng.
  - Tiếp theo sẽ chèn một đoạn script có chứa link host vào database của web server.
  - Sau đó, người dùng nhấn vào link host của hacker thì cookies của người dùng sẽ được hacker đánh cắp.
  - Cuối cùng, hacker lấy cookies người dùng để đánh cắp thông tin hoặc mạo danh người dùng.
 
-<br> 1.6 Điều chỉnh các tham số header <a name="14"></a></br>
-
-<br> 1.7 Mô phỏng XSS đánh cắp phiên khi Login vào trang web. Cookie sẽ được điều hướng về 1 host dựng sẵn <a name="14"></a></br>
+<br> 1.6 Điều chỉnh các tham số header <a name="16"></a></br>
+ - Chúng ta có thể điều chỉnh Header về các tham số sau để lọc tấn công XSS:
+   - `1`: Bật tính năng lọc XSS. Tính năng này thường sẽ là mặc định trong trình duyệt chúng ta. Nếu phát hiện một cuộc tấn công XSS thì trình duyệt sẽ loại bỏ các phần không an toàn.
+   - `1; mode=block`: Bật tính năng lọc XSS. Nếu có một cuộc tấn công XSS thay vì phát hiện như tham số `1` ở trên nó sẽ chặn luôn.
+   - `1; report=<reporting-uri>`: Bật tính năng lọc XSS, phát hiện, loại bỏ các phần không an toàn và báo cáo vi phạm.
+<br> 1.7 Mô phỏng XSS đánh cắp phiên khi Login vào trang web. Cookie sẽ được điều hướng về 1 host dựng sẵn <a name="17"></a></br>
  - Đầu tiên chúng ta sẽ tạo 2 file ` hacker.php` và `hacker.txt` rồi sau đó đẩy nó lên host. Đây sẽ là nơi hacker lưu trữ các cookie của người dùng. File ` hacker.php` dùng để lấy cookie rồi sau đó ghi nó vào trong file `hacker.txt`. Còn file ` hacker.txt` để lưu trữ cookies.
 
    ![image](https://user-images.githubusercontent.com/101852647/168440728-d10a800c-f460-4309-bfe4-990c00d1d502.png)
@@ -182,7 +191,7 @@
 
     ![image](https://user-images.githubusercontent.com/101852647/168441621-e2aa1f26-4e17-4f47-af97-43fb6290a522.png)
 
-<br> 1.7 Mô phỏng code XSS <a name="15"></a></br>
+<br> 1.8 Mô phỏng code XSS <a name="18"></a></br>
 - Đây là code lỗi XSS:
 
   ![image](https://user-images.githubusercontent.com/101852647/167766624-108c8ce9-20bb-4c73-9180-0599499ab63f.png)
@@ -203,7 +212,7 @@
   
   ![image](https://user-images.githubusercontent.com/101852647/167767649-0781af62-0bd8-4d00-b2ba-f03b38b7ca95.png)
 
-<br> 1.8 Khắc phục code XSS <a name="16"></a></br>
+<br> 1.9 Khắc phục code XSS <a name="19"></a></br>
  - Đây là code khắc phục lỗi XSS:
 
    ![image](https://user-images.githubusercontent.com/101852647/167768472-d622c437-0863-497b-b52a-c5c2984a9f3b.png)
