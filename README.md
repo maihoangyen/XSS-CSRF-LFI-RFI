@@ -142,7 +142,7 @@
 
    ![image](https://user-images.githubusercontent.com/101852647/168440728-d10a800c-f460-4309-bfe4-990c00d1d502.png)
 
-   ![image](https://user-images.githubusercontent.com/101852647/168440751-9d3aa67d-71cc-4a1b-8603-781582973169.png)
+   ![image](https://user-images.githubusercontent.com/101852647/168441800-a3d5ad19-56c8-4853-b57e-f68fc38f7952.png)
 
  - Đẩy 2 file vừa tạo lên host.
 
