@@ -318,11 +318,11 @@
    </tr>
    <tr>
         <td ><b>allow_url include = ON</b></td>
-        <td ><b>mã độc hại xuất phát từ database</b></td>      
+        <td ><b>allow_url include = OFF</b></td>      
    </tr>
    <tr>
-        <td ><b>DOM Based XSS</b></td>
-        <td ><b>lỗ hổng tồn tại trong mã máy khách chứ không phải máy chủ</b></td>      
+        <td ><b>allow_url include = ON</b></td>
+        <td ><b>allow_url include = ON</b></td>      
    </tr>
  </table>
 <br> 3.3 Mô phỏng code LFI <a name="33"></a></br>
