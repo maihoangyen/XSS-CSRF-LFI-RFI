@@ -306,6 +306,25 @@
 <br> 3.2 Cách thức hoạt động LFI <a name="32"></a></br>
  - Tấn công Local file inclusion Lỗ hổng Local file inclusion nằm trong quá trình include file cục bộ có sẵn trên server. Lỗ hổng xảy ra khi đầu vào người dùng chứa đường dẫn đến file bắt buộc phải include. Khi đầu vào này không được kiểm tra, tin tặc có thể sử dụng những tên file mặc định và truy cập trái phép đến chúng, tin tặc cũng có thể lợi dụng các thông tin trả về trên để đọc được những tệp tin nhạy cảm trên các thư mục khác nhau bằng cách chèn các ký tự đặc biệt như “/”, “../”, “-“.
 
+<table align="center">
+   <tr>
+        <td align="center" ><b>RFI</b></td>
+        <td align="center"><b>LFI</b></td>
+        
+   </tr>
+   <tr>
+        <td ><b>Tải tệp từ bên ngoài</b></td>
+        <td ><b>Tải các tệp cục bộ. Ví dụ như là etc/passwd</b></td>      
+   </tr>
+   <tr>
+        <td ><b>allow_url include = ON</b></td>
+        <td ><b>mã độc hại xuất phát từ database</b></td>      
+   </tr>
+   <tr>
+        <td ><b>DOM Based XSS</b></td>
+        <td ><b>lỗ hổng tồn tại trong mã máy khách chứ không phải máy chủ</b></td>      
+   </tr>
+ </table>
 <br> 3.3 Mô phỏng code LFI <a name="33"></a></br>
 - Đây là code lỗi LFI:
 
