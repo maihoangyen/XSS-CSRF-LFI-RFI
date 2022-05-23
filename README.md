@@ -304,8 +304,9 @@
  - Local file inclustion (LFI) là kĩ thuật đọc file trong hệ thống , lỗi này xảy ra thường sẽ khiến website bị lộ các thông tin nhảy cảm như là passwd, php.ini, access_log,config.php…
  
 <br> 3.2 Cách thức hoạt động LFI <a name="32"></a></br>
- - Tấn công Local file inclusion Lỗ hổng Local file inclusion nằm trong quá trình include file cục bộ có sẵn trên server. Lỗ hổng xảy ra khi đầu vào người dùng chứa đường dẫn đến file bắt buộc phải include. Khi đầu vào này không được kiểm tra, tin tặc có thể sử dụng những tên file mặc định và truy cập trái phép đến chúng, tin tặc cũng có thể lợi dụng các thông tin trả về trên để đọc được những tệp tin nhạy cảm trên các thư mục khác nhau bằng cách chèn các ký tự đặc biệt như “/”, “../”, “-“.
-
+ - Tấn công Local file inclusion Lỗ hổng Local file inclusion nằm trong quá trình include file cục bộ có sẵn trên server. Khi đầu vào này không được kiểm tra, tin tặc có thể sử dụng những tên file mặc định và truy cập trái phép đến chúng, tin tặc cũng có thể lợi dụng các thông tin trả về trên để đọc được những tệp tin nhạy cảm trên các thư mục khác nhau bằng cách chèn các ký tự đặc biệt như “/”, “../”, “-“.
+ 
+<br> 3.3 Khác nhau giữa LFI và RFI , nguyên nhân <a name="33"></a></br>
 <table align="center">
    <tr>
         <td align="center" ><b>RFI</b></td>
@@ -317,15 +318,15 @@
         <td ><b>Tải các tệp cục bộ. Ví dụ như là etc/passwd</b></td>      
    </tr>
    <tr>
-        <td ><b>allow_url include = ON</b></td>
-        <td ><b>allow_url include = OFF</b></td>      
-   </tr>
-   <tr>
-        <td ><b>allow_url include = ON</b></td>
-        <td ><b>allow_url include = ON</b></td>      
+        <td ><b> Nếu PHP.INI có :allow_url_open=On, allow_url include = ON thì có thể thực hiện RFI</b></td>
+        <td ><b> Nếu PHP.INI có :allow_url_open = OFF, allow_url include = ON thì không thể thực thi RFI mà chỉ có thể thực thi LFI </b></td>      
    </tr>
  </table>
-<br> 3.3 Mô phỏng code LFI <a name="33"></a></br>
+ - Nguyên nhân: 
+   - Lỗ hổng LFI xảy ra khi đầu vào người dùng chứa đường dẫn đến file bắt buộc phải include.
+   - Lỗ hổng RFI xảy ra khi PHP cung cấp các hàm gốc cho phép tấn công RFI.
+ 
+<br> 3.4 Mô phỏng code LFI <a name="34"></a></br>
 - Đây là code lỗi LFI:
 
   ![image](https://user-images.githubusercontent.com/101852647/168015234-3ff28878-8afa-4f35-9116-da7362f35dce.png)
@@ -342,7 +343,7 @@
 
   ![image](https://user-images.githubusercontent.com/101852647/167999155-bced5b89-08d2-468b-8731-e806dbc20191.png)
   
-<br> 3.4 Khắc phục lỗi LFI <a name="34"></a></br>
+<br> 3.5 Khắc phục lỗi LFI <a name="35"></a></br>
  - Đây là code khắc phục lỗi LFI. Chúng ta sẽ sử dụng hàm ` str_replace` để thay đổi một số ký tự `http://, https://, ../` trên url để các hacker không thể khai thác được:
 
    ![image](https://user-images.githubusercontent.com/101852647/168015562-1f783fb4-5d7f-4e70-82bc-e9d00f954095.png)
@@ -350,7 +351,14 @@
  - Trang web vẫn bình thường cho đến khi chúng ta chèn thêm `../../../../etc/paswd` thì nó sẽ không hiển thị nội dung của tệp /etc/passwd:
 
    ![image](https://user-images.githubusercontent.com/101852647/168018052-5df140bf-6e0f-4e00-a5da-6c44417fa015.png) 
-
+   
+<br> 3.6 Các cách khai thác <a name="36"></a></br>
+  - Null-Byte: 
+    - Nếu như code có dạng: `include($_GET['page'].".php");` thì khi ta thực hiện chèn `/etc/passwd` thì nó sẽ có dạng `/etc/passwd.php` để có thể khai thác thì chúng ta phải sử dụng Null-Byte để loại bỏ .php . Tuy nhiên, chỉ thực hiện được khi magic_quotes_gpc=Off.
+  - Thực hiện file `httpd.conf` để có được thông tin về error_log, access_log, ServerName, DocumentRoot,...
+  - Nếu bị dính lỗi về LFI `.htaccess và .htpasswd` có thể đọc và có được thông tin về username và password được thiết đặt ở trong những file này.
+  - Khai thác sử dụng log file
+    
 #### 4. RFI <a name="4"></a>
 <br> 4.1 Khái niệm RFI <a name="41"></a></br>
  - Remote File Inclusion cho phép kẻ tấn công nhúng một mã độc hại được tuỳ chỉnh trên trang web hoặc máy chủ bằng cách sử dụng các tập lệnh . RFI còn cho phép tải lên một tệp nằm trên máy chủ khác được chuyển đến dưới dạng hàm PHP ( include, include_once, require, or require_once)
