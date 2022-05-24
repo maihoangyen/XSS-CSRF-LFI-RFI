@@ -331,11 +331,13 @@
   - Null-Byte: 
     - Nếu như code có dạng: `include($_GET['page'].".php");` thì khi ta thực hiện chèn `/etc/passwd` thì nó sẽ có dạng `/etc/passwd.php` để có thể khai thác thì chúng ta phải sử dụng Null-Byte để loại bỏ .php . Tuy nhiên, chỉ thực hiện được khi magic_quotes_gpc=Off.
   - Thực hiện file `httpd.conf` để có được thông tin về error_log, access_log, ServerName, DocumentRoot,...
-  - Nếu bị dính lỗi về LFI hacker có thể đọc và có được thông tin về username và password được thiết đặt ở trong file `.htaccess và .htpasswd` này.
+  - Nếu bị dính lỗi về LFI hacker có thể đọc và có được thông tin về username và password được đặt ở trong file `.htaccess và .htpasswd` này.
   - Khai thác sử dụng log file: Khi đường dẫn chúng ta có dạng `?page=` thì trong error_log của Apache nó sẽ lưu thông tin về lỗi. Ví dụ: `- - [15/Jul/2009:17:54:01 +0700] "GET /index.php?page=%3C?%20echo%20phpinfo();%20?%3E HTTP/1.1" 200 492 "-" "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1) Gecko/20090624 Firefox/3.5"`. Khi ta thực hiện request thì hệ thống log sẽ ghi vào file log khi đó chúng ta có thể khai thác bằng cách nhập đường dẫn vào sau `?page=`.
-  - Chèn PHP Script trong file JPEG: Chúng ta có thể thực hiện chèn PHP script vào phần comment của file JPEG và thực hiện upload ảnh lên server, nếu như server đó bị lỗi local file inclusion thì có thể khai thác.
-  - Thực hiện PHP Code trong file /proc: Có một file /proc/self/environ lưu thông tin về cấu hình mà nó đang thực thi trên file. Nếu như ta sử dụng Firefox để mở thì nó sẽ hiển thị thông tin liên quan đến Browser như là HTTP_USER_AGENT và HTTP_REFERER. Khi đó nếu website bị lỗi thì có thể thực hiện thiết đặt có chứa mã PHP và thực hiện gộp file để thực thi mã PHP.
-  - 
+  - Chèn PHP Script trong file JPEG: Chúng ta có thể thực hiện chèn PHP script vào phần comment của file JPEG và thực hiện upload ảnh lên server, nếu như server đó bị lỗi LFI thì có thể khai thác.
+  - Thực hiện PHP Code trong file /proc: Có một file `/proc/self/environ` lưu thông tin về cấu hình mà nó đang thực thi trên file. Nếu như ta sử dụng Firefox để mở thì nó sẽ hiển thị thông tin liên quan đến Browser như là `HTTP_USER_AGENT` và `HTTP_REFERER`. Khi đó nếu website bị lỗi thì có thể thực hiện mã PHP và gộp file để thực thi mã PHP.
+  - Mã hóa url. Ví dụ:`..%c0%af..%c0%af..%c0%afetc%c0%afpasswd `
+  - Cắt bớt đường dẫn. Ví dụ:` Kiểm tra xem các kí tự cuối có phải là ".php" không `shellcode.php/.`
+  - Lọc bỏ qua thủ thuật. Ví dụ: `?page=....//....//etc/passwd` hoặc duy trì đường dẫn ban đầu `/var/www/../../etc/passwd`.
 <br> 3.4 Mô phỏng code LFI <a name="34"></a></br>
 - Đây là code lỗi LFI:
 
