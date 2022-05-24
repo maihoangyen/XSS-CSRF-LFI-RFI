@@ -322,10 +322,20 @@
         <td ><b> Nếu PHP.INI có :allow_url_open = OFF, allow_url include = ON thì không thể thực thi RFI mà chỉ có thể thực thi LFI </b></td>      
    </tr>
  </table>
+ 
  - Nguyên nhân: 
    - Lỗ hổng LFI xảy ra khi đầu vào người dùng chứa đường dẫn đến file bắt buộc phải include.
-   - Lỗ hổng RFI xảy ra khi PHP cung cấp các hàm gốc cho phép tấn công RFI.
- 
+   - Lỗ hổng RFI xảy ra khi PHP cung cấp các hàm cho phép tấn công RFI: uire, require_once, include, include_once.
+   
+ <br> 3.4 Các cách khai thác <a name="36"></a></br>
+  - Null-Byte: 
+    - Nếu như code có dạng: `include($_GET['page'].".php");` thì khi ta thực hiện chèn `/etc/passwd` thì nó sẽ có dạng `/etc/passwd.php` để có thể khai thác thì chúng ta phải sử dụng Null-Byte để loại bỏ .php . Tuy nhiên, chỉ thực hiện được khi magic_quotes_gpc=Off.
+  - Thực hiện file `httpd.conf` để có được thông tin về error_log, access_log, ServerName, DocumentRoot,...
+  - Nếu bị dính lỗi về LFI hacker có thể đọc và có được thông tin về username và password được thiết đặt ở trong file `.htaccess và .htpasswd` này.
+  - Khai thác sử dụng log file: Khi đường dẫn chúng ta có dạng `?page=` thì trong error_log của Apache nó sẽ lưu thông tin về lỗi. Ví dụ: `- - [15/Jul/2009:17:54:01 +0700] "GET /index.php?page=%3C?%20echo%20phpinfo();%20?%3E HTTP/1.1" 200 492 "-" "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.1) Gecko/20090624 Firefox/3.5"`. Khi ta thực hiện request thì hệ thống log sẽ ghi vào file log khi đó chúng ta có thể khai thác bằng cách nhập đường dẫn vào sau `?page=`.
+  - Chèn PHP Script trong file JPEG: Chúng ta có thể thực hiện chèn PHP script vào phần comment của file JPEG và thực hiện upload ảnh lên server, nếu như server đó bị lỗi local file inclusion thì có thể khai thác.
+  - Thực hiện PHP Code trong file /proc: Có một file /proc/self/environ lưu thông tin về cấu hình mà nó đang thực thi trên file. Nếu như ta sử dụng Firefox để mở thì nó sẽ hiển thị thông tin liên quan đến Browser như là HTTP_USER_AGENT và HTTP_REFERER. Khi đó nếu website bị lỗi thì có thể thực hiện thiết đặt có chứa mã PHP và thực hiện gộp file để thực thi mã PHP.
+  - 
 <br> 3.4 Mô phỏng code LFI <a name="34"></a></br>
 - Đây là code lỗi LFI:
 
@@ -352,12 +362,7 @@
 
    ![image](https://user-images.githubusercontent.com/101852647/168018052-5df140bf-6e0f-4e00-a5da-6c44417fa015.png) 
    
-<br> 3.6 Các cách khai thác <a name="36"></a></br>
-  - Null-Byte: 
-    - Nếu như code có dạng: `include($_GET['page'].".php");` thì khi ta thực hiện chèn `/etc/passwd` thì nó sẽ có dạng `/etc/passwd.php` để có thể khai thác thì chúng ta phải sử dụng Null-Byte để loại bỏ .php . Tuy nhiên, chỉ thực hiện được khi magic_quotes_gpc=Off.
-  - Thực hiện file `httpd.conf` để có được thông tin về error_log, access_log, ServerName, DocumentRoot,...
-  - Nếu bị dính lỗi về LFI `.htaccess và .htpasswd` có thể đọc và có được thông tin về username và password được thiết đặt ở trong những file này.
-  - Khai thác sử dụng log file
+
     
 #### 4. RFI <a name="4"></a>
 <br> 4.1 Khái niệm RFI <a name="41"></a></br>
