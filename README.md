@@ -40,7 +40,7 @@
  
      3.3 [Khác nhau giữa LFI, RFI và nguyên nhân](#33)
 
-     3.4 [Cách khai thác](#34)
+     3.4 [Các vector attack](#34)
 
      3.3 [Mô phỏng code lỗi LFI](#35)
 
@@ -331,7 +331,7 @@
    - Lỗ hổng LFI xảy ra khi đầu vào người dùng chứa đường dẫn đến file bắt buộc phải include.
    - Lỗ hổng RFI xảy ra khi PHP cung cấp các hàm cho phép tấn công RFI: uire, require_once, include, include_once.
    
- <br> 3.4 Các cách khai thác <a name="34"></a></br>
+ <br> 3.4 Các vector attack <a name="34"></a></br>
   - Null-Byte: 
     - Nếu như code có dạng: `include($_GET['page'].".php");` thì khi ta thực hiện chèn `/etc/passwd` thì nó sẽ có dạng `/etc/passwd.php` để có thể khai thác thì chúng ta phải sử dụng Null-Byte để loại bỏ .php . Tuy nhiên, chỉ thực hiện được khi magic_quotes_gpc=Off.
   - Thực hiện file `httpd.conf` để có được thông tin về error_log, access_log, ServerName, DocumentRoot,...
